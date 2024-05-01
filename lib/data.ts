@@ -29,6 +29,8 @@ export const addChat = async (chat: Chat) => {
 
 export const deleteChat = async (id: string) => {
     const connection =  await pool.getConnection();
+    await connection.query('DELETE FROM messages WHERE id_chat = ?', [id]);
+    await connection.query('DELETE FROM answers WHERE id_chat = ?', [id]);
     await connection.query('DELETE FROM chats WHERE id = ?', [id]);
     connection.release();
 };
@@ -70,3 +72,16 @@ export const addAnswer = async (answer: Answer) => {
     await connection.query('INSERT INTO answers (id_chat, content) VALUES (?, ?)', [answer.id_chat, answer.content]);
     connection.release();
 };
+
+type User = {
+    username: string;
+    password: string;
+}
+
+export const getCredentials = async () => {
+    const connection =  await pool.getConnection();
+    const [credentials] = await connection.query('SELECT * FROM credentials');
+    connection.release();
+
+    return credentials;
+}
