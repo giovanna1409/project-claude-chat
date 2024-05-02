@@ -18,6 +18,10 @@ export interface Answer {
     content: string;
 };
 
+export interface User {
+    username: string;
+    password: string;
+}
 
 /* Breadcrumb Types */
 export interface AppBreadcrumbProps {

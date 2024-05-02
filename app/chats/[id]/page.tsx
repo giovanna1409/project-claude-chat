@@ -1,13 +1,13 @@
 "use client";
 import { ChatService } from "@/service/chat-service";
-import { Message } from "@/types/layout";
+import { Answer, Message } from "@/types/layout";
 import { useRouter } from "next/navigation";
 import { Button } from "primereact/button";
 import { InputTextarea } from "primereact/inputtextarea";
 import { useEffect, useState } from "react";
 
 const ChatDemo = () => {
-    let chatId = window ? window.location.href.split("chats/")[1] : '';
+    const [chatId, setChatId] = useState("");
     const [chatName, setChatName] = useState("");
     const [chatMessageContents, setChatMessageContents] = useState<string[]>([]);
     const [chatAnswerContents, setChatAnswerContents] = useState<string[]>([]);
@@ -16,23 +16,24 @@ const ChatDemo = () => {
     const chatService = new ChatService();
 
     useEffect(() => {
-        chatId = window ? window.location.href.split("chats/")[1] : '';
+        const chatId = window ? window.location.href.split("chats/")[1] : '';
+        setChatId(chatId);
         if (chatId) {
             chatService.getChatById(chatId).then((response) => {
                 setChatName(response.data.chat[0].name);
             });
             chatService.getChatMessages(chatId).then(response => {
-                setChatMessageContents(response.data.chatMessages.map(message => message.content));
+                setChatMessageContents(response.data.chatMessages.map((message: Message) => message.content));
             });
             chatService.getChatAnswers(chatId).then(response => {
-                setChatAnswerContents(response.data.chatAnswers.map(answer => answer.content));
+                setChatAnswerContents(response.data.chatAnswers.map((answer: Answer) => answer.content));
             });
         }
     }, []);
 
     const chatContent = chatMessageContents.map((messageContent, index) => {
         return (
-            <div>
+            <div key={index}>
                 <strong>User</strong>
                 <p>{messageContent}</p>
                 <strong>Claude System</strong>
@@ -61,7 +62,6 @@ const ChatDemo = () => {
     function deleteChat() {
         chatService.deleteChat(chatId).then(() => {
             router.push('/chats');
-            router.refresh();
         });
     }
 
@@ -92,8 +92,8 @@ const ChatDemo = () => {
                         style={{ resize: 'none' }}
                     >
                     </InputTextarea>
-                    <Button disabled={!chatId} type="button" icon="pi pi-fw pi-comment" onClick={addMessage} />
                     <label htmlFor="textarea">Textarea</label>
+                    <Button disabled={!chatId} type="button" icon="pi pi-fw pi-comment" onClick={addMessage} />
                 </span>
             </div>
         </div>

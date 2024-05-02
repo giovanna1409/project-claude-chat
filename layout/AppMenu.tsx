@@ -19,7 +19,7 @@ const AppMenu = () => {
             const chatItems = response.data.chats.map((chat: any) => { return { label: chat.name, icon: 'pi pi-fw pi-comment', to: '/chats/' + chat.id } as AppMenuItem });
             setChatItems(chatItems);
         });
-    }, [router]);
+    }, []);
 
     const model: AppMenuItem[] = [
         {

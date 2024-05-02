@@ -17,7 +17,6 @@ const NewChatDemo = () => {
             const message: Message = { id_chat: response.data.chat.id, content: valueInputMessage };
             chatService.addMessageToChat(message).then(() => {
                 router.push('/chats/' + message.id_chat);
-                router.refresh();
             });
         });
     }

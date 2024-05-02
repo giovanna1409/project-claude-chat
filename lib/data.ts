@@ -1,9 +1,5 @@
+import { Answer, Chat, Message } from '@/types/layout.js';
 import pool from '../app/config/db.js';
-
-type Chat = {
-    id: string;
-    name: string;
-}
 
 export const getChats = async () => {
     const connection =  await pool.getConnection();
@@ -35,11 +31,6 @@ export const deleteChat = async (id: string) => {
     connection.release();
 };
 
-type Message = {
-    id_chat: string;
-    content: string;
-}
-
 export const getChatMessages = async (id: string) => {
     const connection =  await pool.getConnection();
     const [chatMessages] = await connection.query('SELECT * FROM messages WHERE id_chat = ?', [id]);
@@ -54,11 +45,6 @@ export const addMessage = async (message: Message) => {
     connection.release();
 };
 
-type Answer = {
-    id_chat: string;
-    content: any;
-}
-
 export const getChatAnswers = async (id: string) => {
     const connection =  await pool.getConnection();
     const [chatAnswers] = await connection.query('SELECT * FROM answers WHERE id_chat = ?', [id]);
@@ -72,11 +58,6 @@ export const addAnswer = async (answer: Answer) => {
     await connection.query('INSERT INTO answers (id_chat, content) VALUES (?, ?)', [answer.id_chat, answer.content]);
     connection.release();
 };
-
-type User = {
-    username: string;
-    password: string;
-}
 
 export const getCredentials = async () => {
     const connection =  await pool.getConnection();

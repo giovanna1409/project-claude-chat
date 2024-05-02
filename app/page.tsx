@@ -5,7 +5,7 @@ import { InputText } from 'primereact/inputtext';
 import { Password } from 'primereact/password';
 import { classNames } from 'primereact/utils';
 import { useContext, useState } from 'react';
-import { LayoutContext } from '../../layout/context/layoutcontext';
+import { LayoutContext } from '../layout/context/layoutcontext';
 import { ChatService } from '@/service/chat-service';
 
 const LoginPage = () => {
