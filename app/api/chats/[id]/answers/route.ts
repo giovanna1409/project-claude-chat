@@ -1,4 +1,4 @@
-import { getChatAnswers } from "@/lib/data";
+import { getChatAnswers } from "../../../../../lib/data";
 import { NextResponse } from "next/server";
 
 export const GET = async (req: Request) => {

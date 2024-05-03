@@ -1,4 +1,4 @@
-import { deleteChat, getChatById } from "@/lib/data";
+import { deleteChat, getChatById } from "../../../../lib/data";
 import { NextResponse } from "next/server";
 
 export const GET = async (req: Request) => {

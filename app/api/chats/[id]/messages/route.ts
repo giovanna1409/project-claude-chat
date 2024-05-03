@@ -1,4 +1,4 @@
-import { addAnswer, addMessage, getChatMessages } from "@/lib/data";
+import { addAnswer, addMessage, getChatMessages } from "../../../../../lib/data";
 import { NextResponse } from "next/server";
 import Anthropic from "@anthropic-ai/sdk";
 
