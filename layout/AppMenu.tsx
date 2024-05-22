@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 
+import React from 'react';
 import { ChatService } from '@/service/chat-service';
 import { AppMenuItem } from '@/types';
 import { useRouter } from 'next/navigation';

@@ -3,13 +3,18 @@ import { NextResponse } from "next/server";
 import Anthropic from "@anthropic-ai/sdk";
 
 const anthropic = new Anthropic({
-    apiKey: "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",
+    apiKey: "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",
 });
 
 export const GET = async (req: Request) => {
     try {
         const id = req.url.split("chats/")[1].split("/")[0];
+        console.log(id)
         const chatMessages = await getChatMessages(id);
+        console.log(chatMessages)
+        if (!chatMessages) {
+            throw new Error('No messages found');
+        }
         return NextResponse.json({ message: "Ok", chatMessages }, {
             status: 200,
         });

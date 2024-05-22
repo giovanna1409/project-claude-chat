@@ -1,9 +1,10 @@
 import { createPool } from 'mysql2/promise';
 
 const pool = createPool({
-    host: '35.199.126.126',
-    user: 'root',
-    database: 'chat'
+    host: 'sql10.freesqldatabase.com',
+    user: 'sql10711074',
+    password: 'liWckGRl4M',
+    database: 'sql10711074'
 });
 
 export default pool;

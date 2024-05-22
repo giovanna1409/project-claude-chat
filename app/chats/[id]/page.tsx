@@ -1,4 +1,5 @@
 "use client";
+import React from 'react';
 import { ChatService } from "@/service/chat-service";
 import { Answer, Message } from "@/types/layout";
 import { useRouter } from "next/navigation";
