@@ -36,8 +36,6 @@ export const getChatMessages = async (id: string) => {
     const [chatMessages] = await connection.query('SELECT * FROM messages WHERE id_chat = ?', [id]);
     connection.release();
 
-    console.log(chatMessages)
-
     return chatMessages;
 };
 

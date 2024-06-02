@@ -13,13 +13,15 @@ const NewChatDemo = () => {
     const router = useRouter();
 
     function addMessage() {
-        const initialMessageContent = valueInputMessage.split(" ").slice(0, 3).join(" ") + '...';
-        chatService.addChat(initialMessageContent).then(response => {
-            const message: Message = { id_chat: response.data.chat.id, content: valueInputMessage };
-            chatService.addMessageToChat(message).then(() => {
-                router.push('/chats/' + message.id_chat);
+        if (valueInputMessage.length > 0) {
+            const initialMessageContent = valueInputMessage.split(" ").slice(0, 3).join(" ") + '...';
+            chatService.addChat(initialMessageContent).then(response => {
+                const message: Message = { id_chat: response.data.chat.id, content: valueInputMessage };
+                chatService.addMessageToChat(message).then(() => {
+                    router.push('/chats/' + message.id_chat);
+                });
             });
-        });
+        }
     }
 
     return (

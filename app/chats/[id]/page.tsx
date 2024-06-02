@@ -24,6 +24,7 @@ const ChatDemo = () => {
                 setChatName(response.data.chat[0].name);
             });
             chatService.getChatMessages(chatId).then(response => {
+                console.log(response)
                 setChatMessageContents(response.data.chatMessages.map((message: Message) => message.content));
             });
             chatService.getChatAnswers(chatId).then(response => {
