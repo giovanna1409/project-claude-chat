@@ -24,7 +24,6 @@ const ChatDemo = () => {
                 setChatName(response.data.chat[0].name);
             });
             chatService.getChatMessages(chatId).then(response => {
-                console.log(response)
                 setChatMessageContents(response.data.chatMessages.map((message: Message) => message.content));
             });
             chatService.getChatAnswers(chatId).then(response => {
@@ -39,7 +38,7 @@ const ChatDemo = () => {
                 <strong>User</strong>
                 <p>{messageContent}</p>
                 <strong>Claude System</strong>
-                <p>{chatAnswerContents[index]}</p>
+                <p style={{ whiteSpace: 'pre-wrap' }}>{chatAnswerContents[index]}</p>
                 <br></br>
             </div>
         );
@@ -55,7 +54,7 @@ const ChatDemo = () => {
                     <strong>User</strong>
                     <p>{message.content}</p>
                     <strong>Claude System</strong>
-                    <p>{response.data.chatAnswer.content}</p>
+                    <p style={{ whiteSpace: 'pre-wrap' }}>{response.data.chatAnswer.content}</p>
                 </div>
             );
         });
