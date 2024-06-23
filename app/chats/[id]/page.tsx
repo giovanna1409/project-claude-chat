@@ -63,6 +63,7 @@ const ChatDemo = () => {
     function deleteChat() {
         chatService.deleteChat(chatId).then(() => {
             router.push('/chats');
+            window.location.href = 'http://localhost:8080/chats';
         });
     }
 
