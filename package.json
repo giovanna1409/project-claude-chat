@@ -10,7 +10,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.20.8",
+    "@anthropic-ai/sdk": "^0.20.9",
     "axios": "^1.6.8",
     "mysql2": "^3.9.7",
     "next": "14.2.3",
@@ -19,7 +19,8 @@
     "primereact": "^10.6.4",
     "react": "^18",
     "react-dom": "^18",
-    "sass": "^1.76.0"
+    "sass": "^1.76.0",
+    "web-streams-polyfill": "^4.0.0"
   },
   "jest": {
     "preset": "ts-jest",
