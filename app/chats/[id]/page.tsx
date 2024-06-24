@@ -57,6 +57,7 @@ const ChatDemo = () => {
                     <p style={{ whiteSpace: 'pre-wrap' }}>{response.data.chatAnswer.content}</p>
                 </div>
             );
+            setValueInputMessage('');
         });
     }
 
